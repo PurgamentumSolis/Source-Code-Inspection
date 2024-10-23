@@ -6,6 +6,8 @@ Link para o Travis-CI: https://travis-ci.org/Prof-Calebe/Source-Code-Inspection
 <br><br>
 
 Lab 03 - Atividade 7: Ticket Machine corrigido! <br>
+Lab 04 - Atividade 8: Teste de Unidade pequeneninho. <br>
+<br>
 integrantes : <br>
 Fernando Chan Lin 22.221.015-5 <br>
 William Yang 22.121.043-8 <br>
