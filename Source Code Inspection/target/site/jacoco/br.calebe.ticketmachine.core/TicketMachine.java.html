@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>TicketMachine.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ticketmachine</a> &gt; <a href="index.source.html" class="el_package">br.calebe.ticketmachine.core</a> &gt; <span class="el_source">TicketMachine.java</span></div><h1>TicketMachine.java</h1><pre class="source lang-java linenums">package br.calebe.ticketmachine.core;
+
+import br.calebe.ticketmachine.exception.PapelMoedaInvalidaException;
+import br.calebe.ticketmachine.exception.SaldoInsuficienteException;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+/**
+ *
+ * @author Calebe de Paula Bianchini
+ */
+public class TicketMachine {
+
+    protected int valor;
+    protected int saldo;
+<span class="nc" id="L18">    protected int[] papelMoeda = {2, 5, 10, 20, 50, 100};</span>
+
+<span class="nc" id="L20">    public TicketMachine(int valor) {</span>
+<span class="nc" id="L21">        this.valor = valor;</span>
+<span class="nc" id="L22">        this.saldo = 0;</span>
+<span class="nc" id="L23">    }</span>
+
+    public void inserir(int quantia) throws PapelMoedaInvalidaException {
+<span class="nc" id="L26">        boolean achou = false;</span>
+<span class="nc bnc" id="L27" title="All 4 branches missed.">        for (int i = 0; i &lt; papelMoeda.length &amp;&amp; !achou; i++) {</span>
+<span class="nc bnc" id="L28" title="All 2 branches missed.">            if (papelMoeda[i] == quantia) {</span>
+<span class="nc" id="L29">                achou = true;</span>
+            }
+        }
+<span class="nc bnc" id="L32" title="All 2 branches missed.">        if (!achou) {</span>
+<span class="nc" id="L33">            throw new PapelMoedaInvalidaException();</span>
+        }
+<span class="nc" id="L35">        this.saldo += quantia;</span>
+<span class="nc" id="L36">    }</span>
+
+    public int getSaldo() {
+<span class="nc" id="L39">        return saldo;</span>
+    }
+
+public Iterator&lt;Integer&gt; getTroco() {
+<span class="nc" id="L43">    int troco = saldo;</span>
+<span class="nc" id="L44">    List&lt;Integer&gt; trocoList = new ArrayList&lt;&gt;();</span>
+
+<span class="nc bnc" id="L46" title="All 2 branches missed.">    for (int i = papelMoeda.length - 1; i &gt;= 0; i--) {</span>
+<span class="nc bnc" id="L47" title="All 2 branches missed.">        while (troco &gt;= papelMoeda[i]) {</span>
+<span class="nc" id="L48">            trocoList.add(papelMoeda[i]);// notes: seria bom fazer a verificação se o papelMoeda está em &quot;estoque&quot; na máquina</span>
+<span class="nc" id="L49">            troco -= papelMoeda[i];</span>
+        }
+    }
+
+<span class="nc" id="L53">    saldo = 0;// nas especificações estava pedindo para zerar o saldo</span>
+
+<span class="nc" id="L55">    return trocoList.iterator();</span>
+}
+
+    public String imprimir() throws SaldoInsuficienteException {
+<span class="nc bnc" id="L59" title="All 2 branches missed.">        if (saldo &lt; valor) {</span>
+<span class="nc" id="L60">            throw new SaldoInsuficienteException();</span>
+        }
+<span class="nc" id="L62">        return String.format(&quot;*****************\n*** R$ %d,00 ****\n*****************\n&quot;, valor);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

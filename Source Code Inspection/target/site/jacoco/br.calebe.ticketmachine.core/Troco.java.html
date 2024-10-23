@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Troco.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ticketmachine</a> &gt; <a href="index.source.html" class="el_package">br.calebe.ticketmachine.core</a> &gt; <span class="el_source">Troco.java</span></div><h1>Troco.java</h1><pre class="source lang-java linenums">package br.calebe.ticketmachine.core;
+
+import java.util.Iterator;
+
+/**
+ *
+ * @author Calebe de Paula Bianchini
+ */
+class Troco {
+
+    protected PapelMoeda[] papeisMoeda;
+
+<span class="nc" id="L13">public Troco(int valor) {</span>
+<span class="nc" id="L14">        papeisMoeda = new PapelMoeda[6];</span>
+    
+<span class="nc" id="L16">        int count = 0;</span>
+        
+<span class="nc" id="L18">        count = 0;</span>
+<span class="nc bnc" id="L19" title="All 2 branches missed.">        while (valor &gt;= 100) {</span>
+<span class="nc" id="L20">            valor -= 100;</span>
+<span class="nc" id="L21">            count++;</span>
+        }
+<span class="nc" id="L23">        papeisMoeda[5] = new PapelMoeda(100, count);</span>
+        
+<span class="nc" id="L25">        count = 0;</span>
+<span class="nc bnc" id="L26" title="All 2 branches missed.">        while (valor &gt;= 50) {</span>
+<span class="nc" id="L27">            valor -= 50;</span>
+<span class="nc" id="L28">            count++;</span>
+        }
+<span class="nc" id="L30">        papeisMoeda[4] = new PapelMoeda(50, count);</span>
+        
+<span class="nc" id="L32">        count = 0;</span>
+<span class="nc bnc" id="L33" title="All 2 branches missed.">        while (valor % 20 != 0) {</span>
+<span class="nc" id="L34">            count++;</span>
+        }
+<span class="nc" id="L36">        papeisMoeda[3] = new PapelMoeda(20, count);</span>
+<span class="nc" id="L37">        count = 0;</span>
+<span class="nc bnc" id="L38" title="All 2 branches missed.">        while (valor % 10 != 0) {</span>
+<span class="nc" id="L39">            count++;</span>
+        }
+<span class="nc" id="L41">        papeisMoeda[2] = new PapelMoeda(10, count);</span>
+<span class="nc" id="L42">        count = 0;</span>
+<span class="nc bnc" id="L43" title="All 2 branches missed.">        while (valor &gt;= 5) {</span>
+<span class="nc" id="L44">        valor -= 5;</span>
+<span class="nc" id="L45">        count++;</span>
+        }
+<span class="nc" id="L47">        papeisMoeda[1] = new PapelMoeda(5, count);</span>
+<span class="nc" id="L48">        count = 0;</span>
+<span class="nc bnc" id="L49" title="All 2 branches missed.">        while (valor &gt;= 2) {</span>
+<span class="nc" id="L50">        valor -= 2;</span>
+<span class="nc" id="L51">        count++;        </span>
+        }
+<span class="nc" id="L53">        papeisMoeda[0] = new PapelMoeda(2, count);</span>
+<span class="nc" id="L54">    }</span>
+
+    public Iterator&lt;PapelMoeda&gt; getIterator() {
+<span class="nc" id="L57">        return new TrocoIterator(this);</span>
+    }
+
+    class TrocoIterator implements Iterator&lt;PapelMoeda&gt; {
+
+        protected Troco troco;
+
+<span class="nc" id="L64">        public TrocoIterator(Troco troco) {</span>
+<span class="nc" id="L65">            this.troco = troco;</span>
+<span class="nc" id="L66">        }</span>
+
+        @Override
+        public boolean hasNext() {
+<span class="nc bnc" id="L70" title="All 2 branches missed.">            for (int i = 6; i &gt; 0; i--) {</span>
+<span class="nc bnc" id="L71" title="All 2 branches missed.">                if (troco.papeisMoeda[i] != null) {</span>
+<span class="nc" id="L72">                    return true;</span>
+                }
+            }
+<span class="nc" id="L75">            return false;</span>
+        }
+
+        @Override
+        public PapelMoeda next() {
+<span class="nc" id="L80">            PapelMoeda ret = null;</span>
+<span class="nc bnc" id="L81" title="All 4 branches missed.">            for (int i = 6; i &gt; 0 &amp;&amp; ret != null; i--) {</span>
+<span class="nc bnc" id="L82" title="All 2 branches missed.">                if (troco.papeisMoeda[i] != null) {</span>
+<span class="nc" id="L83">                    ret = troco.papeisMoeda[i];</span>
+<span class="nc" id="L84">                    troco.papeisMoeda[i] = null;</span>
+                }
+            }
+<span class="nc" id="L87">            return ret;</span>
+        }
+
+        @Override
+        public void remove() {
+<span class="nc" id="L92">            next();</span>
+<span class="nc" id="L93">        }</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
