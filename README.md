@@ -1,4 +1,6 @@
-Source-Code-Inspection [![Build Status](https://travis-ci.org/Prof-Calebe/Source-Code-Inspection.svg?branch=master)](https://travis-ci.org/Prof-Calebe/Source-Code-Inspection)
+Source-Code-Inspection [![Build Status](https://travis-ci.org/Prof-Calebe/Source-Code-Inspection.svg?branch=master)](https://travis-ci.org/Prof-Calebe/Source-Code-Inspection) 
+![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/PurgamentumSolis/Source-Code-Inspection/maven)
+
 ======================
 
 Link para o Travis-CI: https://travis-ci.org/Prof-Calebe/Source-Code-Inspection
