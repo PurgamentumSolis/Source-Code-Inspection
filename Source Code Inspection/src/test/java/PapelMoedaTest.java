@@ -1,4 +1,5 @@
-package br.calebe.ticketmachine.core;
+
+import br.calebe.ticketmachine.core.PapelMoeda;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
@@ -6,15 +7,29 @@ import static org.junit.jupiter.api.Assertions.*;
 public class PapelMoedaTest {
 
     @Test
-    public void testPapelMoedaCreation() {
-        PapelMoeda papelMoeda = new PapelMoeda(10, 1);
-        assertEquals(10, papelMoeda.getValor(), "The value should be 10");
-        assertEquals(1, papelMoeda.getQuantidade(), "The quantity should be 1");
+    public void CriacaoPapelMoedaValoresValidosTeste() {
+        PapelMoeda papelMoeda = new PapelMoeda(2, 1);
+        assertEquals(2, papelMoeda.getValor(), "O valor deveria ser 2");
+        assertEquals(1, papelMoeda.getQuantidade(), "A quantidade deveria ser 1");
     }
 
     @Test
-    public void testNegativeValue() {
-        PapelMoeda papelMoeda = new PapelMoeda(-5, 2);
-        assertTrue(papelMoeda.getValor() < 0, "The value should be negative");
+    public void CriacaoPapelMoedaValoresInvalidosTeste() {
+        PapelMoeda papelMoeda = new PapelMoeda(3, 1);
+        assertEquals(3, papelMoeda.getValor(), "O valor deveria ser 3");
+        assertEquals(1, papelMoeda.getQuantidade(), "A quantidade deveria ser 1");
     }
+
+    @Test
+    public void CriacaoPapelMoedaValoresNegativosTeste() {
+        PapelMoeda papelMoeda = new PapelMoeda(-5, 1);
+        assertTrue(papelMoeda.getValor() < 0, "O valor recebido e negativo");
+    }
+
+    @Test
+    public void CriacaoPapelMoedaQuantidadeNegativosTeste() {
+        PapelMoeda papelMoeda = new PapelMoeda(50, -1);
+        assertTrue(papelMoeda.getQuantidade() < 0, "O valor recebido e negativo");
+    }
+
 }
