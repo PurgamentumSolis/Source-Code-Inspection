@@ -1,7 +1,0 @@
-GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
-ticketmachine,br.calebe.ticketmachine.exception,PapelMoedaInvalidaException,0,3,0,0,0,1,0,1,0,1
-ticketmachine,br.calebe.ticketmachine.exception,SaldoInsuficienteException,0,3,0,0,0,1,0,1,0,1
-ticketmachine,br.calebe.ticketmachine.core,Troco,117,0,12,0,33,0,8,0,2,0
-ticketmachine,br.calebe.ticketmachine.core,PapelMoeda,0,15,0,0,0,6,0,3,0,3
-ticketmachine,br.calebe.ticketmachine.core,Troco.TrocoIterator,59,0,10,0,15,0,9,0,4,0
-ticketmachine,br.calebe.ticketmachine.core,TicketMachine,0,139,0,14,0,25,0,12,0,5
